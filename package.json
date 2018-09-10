@@ -51,9 +51,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom",
-    "precommit": "npm test",
-    "prepush": "npm test"
+    "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -100,5 +98,8 @@
     "eslint-plugin-standard": "^4.0.0",
     "husky": "^0.14.3",
     "standard": "^12.0.1"
+  },
+  "resolutions": {
+    "babel-core": "7.0.0-bridge.0"
   }
 }

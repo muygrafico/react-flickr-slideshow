@@ -1,18 +1,19 @@
 module.exports = {
-    "extends": ["standard", "standard-react"],
+    "extends": ["standard","standard-react"],
     "rules": {
-        "indent" : ["error", 4, { "ignoredNodes": ["JSXElement *"] }],
-        "react/jsx-indent" : ["error", 2]
+      "indent" : 0,
+      "react/jsx-indent" : ["error", 4]
+
     },
     "parserOptions": {
-        "ecmaVersion": 6,
-         "sourceType": "module",
-         "module": "commonjs"
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "module": "commonjs"
     },
     "env": {
-        "browser": true,
-        "commonjs": true,
-        "es6": true,
-        "node": true
+      "browser": true,
+      "commonjs": true,
+      "es6": true,
+      "node": true
     }
 };

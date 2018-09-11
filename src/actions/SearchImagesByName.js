@@ -37,6 +37,14 @@ export function updateSeachValue (newValue) {
     }
 }
 
+export function updateSelectedImageIndex (newIndex) {
+    console.log(newIndex)
+    return {
+        type: 'SELECTED_IMAGE_INDEX_UPDATED',
+        newIndex
+    }
+}
+
 export function SearchImagesByName (tags) {
     console.log(tags)
     return (dispatch) => {

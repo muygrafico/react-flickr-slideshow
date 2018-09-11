@@ -3,15 +3,19 @@ import PropTypes from 'prop-types'
 import Thumbnail from './Thumbnail'
 import util from '../utils'
 
-function buildMediaCards (photos) {
+function buildMediaCards (photos, updateSelectedImageIndex) {
   if (!photos) {
     return null
   }
-  console.log(photos)
+
   return photos.map((card, i) => {
     return (
         <li key={i}>
-            <Thumbnail photoURL={util.genURL(card)} />
+            <Thumbnail
+              photoURL={util.genURL(card)}
+              index={i}
+              updateSelectedImageIndex={updateSelectedImageIndex}
+              />
         </li>
     )
   })
@@ -20,13 +24,13 @@ function buildMediaCards (photos) {
 const ThumbnailsList = (props) => {
   return (
       <ul className='thumbnails-list'>
-          {buildMediaCards(props.photos)}
+          {buildMediaCards(props.photos, props.updateSelectedImageIndex)}
       </ul>
   )
 }
 
 ThumbnailsList.propTypes = {
-  // photoURL: PropTypes.string,
+  updateSelectedImageIndex: PropTypes.func,
   photos: PropTypes.any
 }
 

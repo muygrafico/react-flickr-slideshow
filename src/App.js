@@ -14,7 +14,8 @@ const constructImageURL = function (imgData) {
 
 const mapStateToProps = (store) => {
   return {
-    photos: store.DataReducer.photos[0]
+    photos: store.DataReducer.photos[0],
+    searchValue: store.DataReducer.searchValue
   }
 }
 
@@ -25,12 +26,16 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 class App extends Component {
+  // constructor (props) {
+  //   super(props)
+  //   this.SearchImagesByName = this.SearchImagesByName.bind(this)
+  // }
+
   SearchImagesByName (event) {
-    this.props.SearchImagesByName('medellin')
+    this.props.SearchImagesByName(this.props.searchValue)
   }
 
   render () {
-    console.log(this.props)
     return (
         <div className='App'>
             <header className='App-header'>
@@ -43,7 +48,7 @@ class App extends Component {
                 <p className='App-intro'>
                 To get started, edit <code>src/App.js</code> and save to reload.
               </p>
-                  <button onClick={(e) => this.SearchImagesByName(e)}>Test redux action</button>
+                  <button onClick={(e) => { this.SearchImagesByName(this.props.searchValue) }}>Test redux action</button>
                       <div>
                           <img src={constructImageURL(this.props.photos)} alt='' />
                       </div>
@@ -54,6 +59,7 @@ class App extends Component {
 
 App.propTypes = {
   SearchImagesByName: PropTypes.func.isRequired,
+  searchValue: PropTypes.string,
   photos: PropTypes.any
 }
 

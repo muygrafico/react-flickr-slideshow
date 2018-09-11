@@ -29,6 +29,13 @@ export function photosFetchDataSuccess (photos) {
     }
 }
 
+export function updateSeachValue (newValue) {
+    return {
+        type: 'SEARCH_VALUE_UPDATED',
+        newValue
+    }
+}
+
 export function SearchImagesByName (tags) {
     console.log(tags)
     return (dispatch) => {
@@ -37,7 +44,7 @@ export function SearchImagesByName (tags) {
           dispatch(photosFetchDataSuccess(res.data))
         })
         .catch(err => {
-          console.log(err)
+          console.warn(err)
           dispatch(photosHasErrored(err))
         })
     }

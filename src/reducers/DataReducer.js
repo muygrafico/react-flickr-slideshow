@@ -1,5 +1,6 @@
 const initialState = {
-  photos: []
+  photos: [],
+  searchValue: ''
 }
 
 export default (state = initialState, action) => {
@@ -8,6 +9,8 @@ export default (state = initialState, action) => {
     const response = action.photos
     const photoArray = response.photos.photo
     return Object.assign({}, state, { photos: photoArray })
+  case 'SEARCH_VALUE_UPDATED':
+    return Object.assign({}, state, { searchValue: action.newValue })
   default:
    return state
  }

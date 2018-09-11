@@ -4,3 +4,17 @@
 @import "helpers/mixins";
 
 @import "base/normalize";
+
+body, html, #root {
+  height: 100%;
+}
+
+.slideshow {
+  // background-color: red;
+  height: 100%;
+}
+
+.slideshow-header {
+  padding-top: 50px;
+  text-align: center;
+}

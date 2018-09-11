@@ -30,6 +30,7 @@ export function photosFetchDataSuccess (photos) {
 }
 
 export function updateSeachValue (newValue) {
+    console.log(newValue)
     return {
         type: 'SEARCH_VALUE_UPDATED',
         newValue

@@ -1,7 +1,6 @@
 import React, { Component } from 'react' // eslint-disable-line no-unused-vars
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import './App.css'
 import SearchBox from './components/SearchBox.js'
 import { SearchImagesByName } from './actions/SearchImagesByName'
 
@@ -31,8 +30,8 @@ class App extends Component {
 
   render () {
     return (
-        <div className='App'>
-            <header className='App-header'>
+        <div className='slideshow'>
+            <header className='slideshow-header'>
                 <SearchBox />
             </header>
                 <button onClick={(e) => { this.SearchImagesByName(this.props.searchValue) }}>Test redux action</button>

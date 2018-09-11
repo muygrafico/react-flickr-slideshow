@@ -28,15 +28,22 @@ class App extends Component {
   }
 
   render () {
+    const selectedImage = this.props.selectedImageIndex
     return (
-        <Slideshow photoURL={util.genURL(this.props.photos[this.props.selectedImageIndex])} >
-            <header className='slideshow-header'>
-                <SearchBox />
-            </header>
+        <div className='slideshow-container'>
+            <Slideshow photoURL={util.genURL(this.props.photos[selectedImage])} >
+                <header className='slideshow-header'>
+                    <SearchBox />
+                    {
+                        (this.props.photos && this.props.photos[selectedImage] && this.props.photos[selectedImage].title) &&
+                        <p className='slideshow-title'>{this.props.photos[selectedImage].title}</p>
+                    }
+                </header>
+            </Slideshow>
             <ThumbnailsList photos={this.props.photos}
               updateSelectedImageIndex={this.props.updateSelectedImageIndex}
               />
-        </Slideshow>
+        </div>
     )
   }
 }

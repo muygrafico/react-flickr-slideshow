@@ -1,12 +1,33 @@
-.slideshow {
+.slideshow-container {
+  // background-color: green;
   height: 100%;
+}
+
+.slideshow {
+  height: calc(100% - 120px);
   width: 100%;
+  max-width: 600px;
+  max-height: 600px;
+  margin: 0 auto;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .slideshow-header {
   padding-top: 50px;
   text-align: center;
+}
+
+.slideshow-title {
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0,0,0, .9);
+  width: 100%;
+  padding: 2em;
+  margin: 0;
+  color: #fff;
+  box-sizing: border-box;
 }

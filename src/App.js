@@ -4,15 +4,12 @@ import PropTypes from 'prop-types'
 import SearchBox from './components/SearchBox.js'
 import { SearchImagesByName } from './actions/SearchImagesByName'
 import Slideshow from './components/Slideshow.js'
-const genURL = function (imgData) {
-  if (imgData) {
-    return `https://farm${imgData.farm}.staticflickr.com/${imgData.server}/${imgData.id}_${imgData.secret}.jpg`
-  }
-}
+import ThumbnailsList from './components/ThumbnailsList.js'
+import util from './utils'
 
 const mapStateToProps = (store) => {
   return {
-    photos: store.DataReducer.photos[0],
+    photos: store.DataReducer.photos,
     searchValue: store.DataReducer.searchValue
   }
 }
@@ -30,10 +27,11 @@ class App extends Component {
 
   render () {
     return (
-        <Slideshow photoURL={genURL(this.props.photos)} >
+        <Slideshow photoURL={util.genURL(this.props.photos)} >
             <header className='slideshow-header'>
                 <SearchBox />
             </header>
+            <ThumbnailsList photos={this.props.photos} />
         </Slideshow>
     )
   }

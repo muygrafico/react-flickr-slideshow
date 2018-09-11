@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import SearchBox from './components/SearchBox.js'
 import { SearchImagesByName } from './actions/SearchImagesByName'
 
-const constructImageURL = function (imgData) {
+const genURL = function (imgData) {
   if (imgData) {
     return `https://farm${imgData.farm}.staticflickr.com/${imgData.server}/${imgData.id}_${imgData.secret}.jpg`
   }
@@ -30,14 +30,13 @@ class App extends Component {
 
   render () {
     return (
-        <div className='slideshow'>
-            <header className='slideshow-header'>
-                <SearchBox />
-            </header>
-                <button onClick={(e) => { this.SearchImagesByName(this.props.searchValue) }}>Test redux action</button>
-                    <div>
-                        <img src={constructImageURL(this.props.photos)} alt='' />
-                    </div>
+        <div className='slideshow'
+          style={{
+              backgroundImage: 'url(' + genURL(this.props.photos) + ')'
+            }}>
+                <header className='slideshow-header'>
+                    <SearchBox />
+                </header>
         </div>
     )
   }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react' // eslint-disable-line no-unused-vars
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import logo from './logo.svg'
 import './App.css'
 import SearchBox from './components/SearchBox.js'
 import { SearchImagesByName } from './actions/SearchImagesByName'
@@ -26,11 +25,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 class App extends Component {
-  // constructor (props) {
-  //   super(props)
-  //   this.SearchImagesByName = this.SearchImagesByName.bind(this)
-  // }
-
   SearchImagesByName (event) {
     this.props.SearchImagesByName(this.props.searchValue)
   }
@@ -39,19 +33,12 @@ class App extends Component {
     return (
         <div className='App'>
             <header className='App-header'>
-                <img src={logo}
-                  className='App-logo' alt='logo'
-          />
-              <SearchBox />
-                  <h1 className='App-title'>Welcome to React</h1>
+                <SearchBox />
             </header>
-                <p className='App-intro'>
-                To get started, edit <code>src/App.js</code> and save to reload.
-              </p>
-                  <button onClick={(e) => { this.SearchImagesByName(this.props.searchValue) }}>Test redux action</button>
-                      <div>
-                          <img src={constructImageURL(this.props.photos)} alt='' />
-                      </div>
+                <button onClick={(e) => { this.SearchImagesByName(this.props.searchValue) }}>Test redux action</button>
+                    <div>
+                        <img src={constructImageURL(this.props.photos)} alt='' />
+                    </div>
         </div>
     )
   }

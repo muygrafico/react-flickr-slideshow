@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import SearchBox from './components/SearchBox.js'
 import { SearchImagesByName } from './actions/SearchImagesByName'
-
+import Slideshow from './components/Slideshow.js'
 const genURL = function (imgData) {
   if (imgData) {
     return `https://farm${imgData.farm}.staticflickr.com/${imgData.server}/${imgData.id}_${imgData.secret}.jpg`
@@ -30,14 +30,11 @@ class App extends Component {
 
   render () {
     return (
-        <div className='slideshow'
-          style={{
-              backgroundImage: 'url(' + genURL(this.props.photos) + ')'
-            }}>
-                <header className='slideshow-header'>
-                    <SearchBox />
-                </header>
-        </div>
+        <Slideshow photoURL={genURL(this.props.photos)} >
+            <header className='slideshow-header'>
+                <SearchBox />
+            </header>
+        </Slideshow>
     )
   }
 }

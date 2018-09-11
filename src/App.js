@@ -14,8 +14,7 @@ const mapDispatchToProps = dispatch => ({
 
 class App extends Component {
   SearchImagesByName (event) {
-    console.log(this.props)
-    this.props.SearchImagesByName()
+    this.props.SearchImagesByName('black')
   }
 
   render () {

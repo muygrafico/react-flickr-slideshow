@@ -1,10 +1,14 @@
-// https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + apiKey + '&user_id=' + authorId + '&per_page=' + perPage + '&page=' + page + '&format=json&nojsoncallback=1'
 import axios from 'axios'
+import { API_KEY, API_URL } from '../constants/configs'
 
-const baseURl = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=?&api_key='
-const apikey = '1a0f137ab196953931f4c9100dac0dcf'
-const url = baseURl + apikey + '&tags=japan'
-console.log(url)
+// warns if there is no REACT_APP_FLICKR_API_KEY for API requests
+if (!API_KEY) {
+  const error = {
+    error: 'no REACT_APP_FLICKR_API_KEY',
+    hint: 'create a .env file and put REACT_APP_FLICKR_API_KEY with a key value'
+    }
+  console.warn(error)
+}
 
 export function photosHasErrored (error) {
     return {
@@ -25,10 +29,9 @@ export function photosFetchDataSuccess (photos) {
     }
 }
 
-export function SearchImagesByName () {
-    // We return a function instead of an action object
+export function SearchImagesByName (tags) {
     return (dispatch) => {
-        axios.get(url)
+        axios.get(API_URL + API_KEY + `&tags=${tags}`)
         .then(res => {
           dispatch(photosFetchDataSuccess(res.data))
         })

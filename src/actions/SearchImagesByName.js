@@ -30,6 +30,7 @@ export function photosFetchDataSuccess (photos) {
 }
 
 export function SearchImagesByName (tags) {
+    console.log(tags)
     return (dispatch) => {
         axios.get(API_URL + API_KEY + `&tags=${tags}`)
         .then(res => {

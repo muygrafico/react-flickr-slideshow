@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+@import "helpers/variables";
+@import "helpers/mixins";
+
+@import "base/normalize";
+
+@import "components/slideshow";
+@import "components/thumbnailslist";
+@import "components/thumbnail";
+
+
+body, html, #root {
+  height: 100%;
+}
+
+body {
+  background-color: #050505;
+}

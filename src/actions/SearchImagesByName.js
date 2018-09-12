@@ -29,14 +29,31 @@ export function photosFetchDataSuccess (photos) {
     }
 }
 
+export function updateSeachValue (newValue) {
+    console.log(newValue)
+    return {
+        type: 'SEARCH_VALUE_UPDATED',
+        newValue
+    }
+}
+
+export function updateSelectedImageIndex (newIndex) {
+    console.log(newIndex)
+    return {
+        type: 'SELECTED_IMAGE_INDEX_UPDATED',
+        newIndex
+    }
+}
+
 export function SearchImagesByName (tags) {
+    console.log(tags)
     return (dispatch) => {
         axios.get(API_URL + API_KEY + `&tags=${tags}`)
         .then(res => {
           dispatch(photosFetchDataSuccess(res.data))
         })
         .catch(err => {
-          console.log(err)
+          console.warn(err)
           dispatch(photosHasErrored(err))
         })
     }

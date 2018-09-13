@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Slideshow = (props) => {
+const MainImage = (props) => {
   return (
-      <div className='slideshow'
+      <div className='main-image'
         style={{
             backgroundImage: 'url(' + props.photoURL + ')'
           }}>
@@ -12,9 +12,9 @@ const Slideshow = (props) => {
   )
 }
 
-Slideshow.propTypes = {
+MainImage.propTypes = {
   photoURL: PropTypes.string,
   children: PropTypes.any
 }
 
-export default Slideshow
+export default MainImage

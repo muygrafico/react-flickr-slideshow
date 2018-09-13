@@ -41,9 +41,11 @@ class SearchBox extends Component {
 
   render () {
     return (
-        <div>
+        <div className='searchbox'>
             <input
+              className='searchbox__input'
               value={this.props.value}
+              placeholder='type to search image'
               onChange={evt => this.handleChange(evt)}
           />
         </div>

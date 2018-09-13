@@ -1,0 +1,23 @@
+.main-image {
+  background-color: white;
+  height: calc(100% - 300px);
+  width: calc(100% - 2em);
+  margin: 0 1em;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border: 1px dotted rgba(black, .05);
+}
+
+.main-image__title {
+  bottom: 0;
+  background-color: rgba(0,0,0, .9);
+  width: calc(100% - 2em);
+  padding: 2em;
+  margin: 1em 1em 0 1em;
+  color: #fff;
+  text-align: center;
+  box-sizing: border-box;
+  transition: all 0.25s ease-in;
+}

@@ -1,6 +1,6 @@
 .thumbnail {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
   background-repeat: no-repeat;
   background-color: red;
   background-size: cover;
@@ -10,4 +10,9 @@
   padding: 0;
   box-sizing: border-box;
   border-right: 1px solid #dadada;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+    opacity: .2;
+  }
 }

@@ -6,14 +6,19 @@
 @import "base/normalize";
 
 @import "components/slideshow";
-@import "components/thumbnailslist";
+@import "components/main-image";
+@import "components/searchbox";
+@import "components/thumbnails-list";
 @import "components/thumbnail";
 
 
 body, html, #root {
   height: 100%;
+  width: 100%;
 }
 
-body {
-  background-color: #050505;
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

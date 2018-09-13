@@ -1,1 +1,21 @@
+.searchbox {
+  width: 100%;
+  text-align: center;
+}
 
+.searchbox__input {
+  margin: 0 auto 1em auto;
+  box-sizing: border-box;
+  max-width: 650px;
+  font-family: Helvetica, Arial, sans-serif;
+  padding: 1em;
+  font-size: 1.5em;
+  border: 1px  solid rgba(white, .25);
+  background-color: #f3f3f4;
+  color: #333333;
+  border-radius: 5px;
+
+  &:focus {
+    outline: none;
+  }
+}

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import SearchBox from './components/SearchBox.js'
 import { SearchImagesByName, updateSelectedImageIndex } from './actions/SearchImagesByName'
-import Slideshow from './components/Slideshow.js'
+import MainImage from './components/MainImage.js'
 import ThumbnailsList from './components/ThumbnailsList.js'
 import util from './utils'
 
@@ -26,8 +26,8 @@ const renderTitle = (props) => {
     return props.photos &&
     props.photos[props.selectedImageIndex] &&
     props.photos[[props.selectedImageIndex]].title
-        ? <p className='slideshow-title'>{props.photos[props.selectedImageIndex].title}</p>
-        : null
+        ? <p className='main-image__title'>{props.photos[props.selectedImageIndex].title}</p>
+        : <p className='main-image__title'>please select an image if available</p>
   }
 
   renderTitle.propTypes = {
@@ -43,13 +43,12 @@ class App extends Component {
   render () {
     const selectedImage = this.props.selectedImageIndex
     return (
-        <div className='slideshow-container'>
-            <Slideshow photoURL={util.genURL(this.props.photos[selectedImage], 'h')} >
-                <header className='slideshow-header'>
-                    <SearchBox />
-                    {renderTitle(this.props)}
-                </header>
-            </Slideshow>
+        <div className='slideshow'>
+            <header className='slideshow__header'>
+                <SearchBox />
+            </header>
+            <MainImage photoURL={util.genURL(this.props.photos[selectedImage], 'b')} />
+            {renderTitle(this.props)}
             <ThumbnailsList photos={this.props.photos}
               updateSelectedImageIndex={this.props.updateSelectedImageIndex}
               />

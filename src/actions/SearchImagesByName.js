@@ -1,6 +1,4 @@
-// import axios from 'axios'
 import { API_KEY, API_URL } from '../constants/configs'
-// import Utils from '../utils'
 
 // warns if there is no REACT_APP_FLICKR_API_KEY for API requests
 if (!API_KEY) {
@@ -45,7 +43,6 @@ export function updateSelectedImageIndex (newIndex) {
 }
 
 export function SearchImagesByName (tags) {
-    // console.log(tags)
     const url = API_URL + API_KEY + `&tags=${tags}`
 
     return (dispatch) => {

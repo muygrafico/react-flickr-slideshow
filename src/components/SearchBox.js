@@ -21,14 +21,22 @@ class SearchBox extends Component {
   constructor (props) {
     super(props)
     this.state = { value: '' }
-    this.updateSeachValue = debounce(this.props.updateSeachValue, 500)
   }
+
   handleChange (evt) {
-    const val = evt.target.value
-    this.setState({ value: val }, () => {
-      this.updateSeachValue(val)
-      this.props.SearchImagesByName(val)
-    })
+    this.setState({ value: evt.target.value })
+    this.sendTextChange(evt.target.value.trim())
+  }
+
+  componentDidMount () {
+        this.sendTextChange = debounce(this.sendTextChange, 500)
+        this.setState({ value: this.props.searchValue })
+  }
+
+  sendTextChange (text) {
+        console.log('debounced search')
+        this.props.updateSeachValue(text)
+        this.props.SearchImagesByName(text)
   }
 
   render () {
@@ -44,9 +52,10 @@ class SearchBox extends Component {
 }
 
 SearchBox.propTypes = {
-  updateSeachValue: PropTypes.any,
+  updateSeachValue: PropTypes.func,
   SearchImagesByName: PropTypes.func.isRequired,
-  value: PropTypes.string
+  value: PropTypes.string,
+  searchValue: PropTypes.string
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBox)

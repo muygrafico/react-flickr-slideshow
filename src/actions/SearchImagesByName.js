@@ -1,5 +1,6 @@
-import axios from 'axios'
+// import axios from 'axios'
 import { API_KEY, API_URL } from '../constants/configs'
+// import Utils from '../utils'
 
 // warns if there is no REACT_APP_FLICKR_API_KEY for API requests
 if (!API_KEY) {
@@ -10,10 +11,10 @@ if (!API_KEY) {
   console.warn(error)
 }
 
-export function photosHasErrored (error) {
+export function photosHasErrors (errors) {
     return {
-        type: 'PHOTOS_HAS_ERRORED',
-        hasErrored: error
+        type: 'PHOTOS_HAS_ERRORS',
+        errors
     }
 }
 export function photosIsLoading (bool) {
@@ -30,7 +31,6 @@ export function photosFetchDataSuccess (photos) {
 }
 
 export function updateSeachValue (newValue) {
-    console.log(newValue)
     return {
         type: 'SEARCH_VALUE_UPDATED',
         newValue
@@ -38,7 +38,6 @@ export function updateSeachValue (newValue) {
 }
 
 export function updateSelectedImageIndex (newIndex) {
-    console.log(newIndex)
     return {
         type: 'SELECTED_IMAGE_INDEX_UPDATED',
         newIndex
@@ -46,15 +45,23 @@ export function updateSelectedImageIndex (newIndex) {
 }
 
 export function SearchImagesByName (tags) {
-    console.log(tags)
+    // console.log(tags)
+    const url = API_URL + API_KEY + `&tags=${tags}`
+
     return (dispatch) => {
-        axios.get(API_URL + API_KEY + `&tags=${tags}`)
-        .then(res => {
-          dispatch(photosFetchDataSuccess(res.data))
-        })
-        .catch(err => {
-          console.warn(err)
-          dispatch(photosHasErrored(err))
-        })
+      fetch(url, {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          response.json().then(json => {
+            json.stat !== 'fail'
+            ? dispatch(photosFetchDataSuccess(json))
+            : dispatch(photosHasErrors(json))
+          })
+        }
+      })
     }
 }

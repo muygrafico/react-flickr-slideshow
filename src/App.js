@@ -22,6 +22,19 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
+const renderTitle = (props) => {
+    return props.photos &&
+    props.photos[props.selectedImageIndex] &&
+    props.photos[[props.selectedImageIndex]].title
+        ? <p className='slideshow-title'>{props.photos[props.selectedImageIndex].title}</p>
+        : null
+  }
+
+  renderTitle.propTypes = {
+    selectedImageIndex: PropTypes.any,
+    photos: PropTypes.any
+  }
+
 class App extends Component {
   SearchImagesByName (event) {
     this.props.SearchImagesByName(this.props.searchValue)
@@ -31,13 +44,10 @@ class App extends Component {
     const selectedImage = this.props.selectedImageIndex
     return (
         <div className='slideshow-container'>
-            <Slideshow photoURL={util.genURL(this.props.photos[selectedImage])} >
+            <Slideshow photoURL={util.genURL(this.props.photos[selectedImage], 'h')} >
                 <header className='slideshow-header'>
                     <SearchBox />
-                    {
-                        (this.props.photos && this.props.photos[selectedImage] && this.props.photos[selectedImage].title) &&
-                        <p className='slideshow-title'>{this.props.photos[selectedImage].title}</p>
-                    }
+                    {renderTitle(this.props)}
                 </header>
             </Slideshow>
             <ThumbnailsList photos={this.props.photos}

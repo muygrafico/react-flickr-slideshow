@@ -12,7 +12,7 @@ function buildMediaCards (photos, updateSelectedImageIndex) {
     return (
         <li key={i}>
             <Thumbnail
-              photoURL={util.genURL(card)}
+              photoURL={util.genURL(card, 'q')}
               index={i}
               updateSelectedImageIndex={updateSelectedImageIndex}
               />

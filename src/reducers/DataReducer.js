@@ -14,6 +14,9 @@ export default (state = initialState, action) => {
     return Object.assign({}, state, { searchValue: action.newValue })
   case 'SELECTED_IMAGE_INDEX_UPDATED':
     return Object.assign({}, state, { selectedImageIndex: action.newIndex })
+   case 'PHOTOS_HAS_ERRORS':
+      console.warn(action.errors)
+      return state
   default:
    return state
  }

@@ -11,13 +11,11 @@
 }
 
 .main-image__title {
-  bottom: 0;
   background-color: rgba(0,0,0, .9);
   width: calc(100% - 2em);
   padding: 2em;
   margin: 1em 1em 0 1em;
-  color: #fff;
+  color: white;
   text-align: center;
   box-sizing: border-box;
-  transition: all 0.25s ease-in;
 }

@@ -12,6 +12,10 @@
 
 
   > li {
+    &.active {
+      opacity: .25;
+    }
+
     display: inline-block;
     list-style: none;
     flex-grow: 1;

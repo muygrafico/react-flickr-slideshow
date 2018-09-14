@@ -49,7 +49,9 @@ class App extends Component {
             </header>
             <MainImage photoURL={util.genURL(this.props.photos[selectedImage], 'b')} />
             {renderTitle(this.props)}
-            <ThumbnailsList photos={this.props.photos}
+            <ThumbnailsList
+              photos={this.props.photos}
+              selectedImageIndex={this.props.selectedImageIndex}
               updateSelectedImageIndex={this.props.updateSelectedImageIndex}
               />
         </div>

@@ -40,6 +40,20 @@ class App extends Component {
     this.props.PhotosActions(this.props.searchValue)
   }
 
+  moveOneImageIndex (evt, direction) {
+    evt.target.blur()
+    const i = this.props.selectedImageIndex
+    const l = this.props.photos.length
+
+    if (direction === 'left' && i !== 0) {
+      this.props.updateSelectedImageIndex(i - 1)
+    }
+
+    if (direction === 'right' && i !== l - 1) {
+      this.props.updateSelectedImageIndex(i + 1)
+    }
+  }
+
   render () {
     const selectedImage = this.props.selectedImageIndex
     return (
@@ -47,7 +61,14 @@ class App extends Component {
             <header className='slideshow__header'>
                 <SearchBox />
             </header>
-            <MainImage photoURL={util.genURL(this.props.photos[selectedImage], 'b')} />
+            <MainImage photoURL={util.genURL(this.props.photos[selectedImage], 'b')}>
+                <button
+                  onClick={(evt) => this.moveOneImageIndex(evt, 'left')}
+                  className='main-image__button-left' />
+                <button
+                  onClick={(evt) => this.moveOneImageIndex(evt, 'right')}
+                  className='main-image__button-right' />
+            </MainImage>
             {renderTitle(this.props)}
             <ThumbnailsList
               photos={this.props.photos}

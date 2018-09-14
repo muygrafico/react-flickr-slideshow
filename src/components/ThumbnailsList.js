@@ -36,7 +36,7 @@ const ThumbnailsList = (props) => {
 
 ThumbnailsList.propTypes = {
   updateSelectedImageIndex: PropTypes.func,
-  photos: PropTypes.arr,
+  photos: PropTypes.any,
   selectedImageIndex: PropTypes.number
 }
 

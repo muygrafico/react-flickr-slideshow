@@ -42,7 +42,7 @@ export function updateSelectedImageIndex (newIndex) {
     }
 }
 
-export function SearchImagesByName (tags) {
+export function PhotosActions (tags) {
     const url = API_URL + API_KEY + `&tags=${tags}`
 
     return (dispatch) => {

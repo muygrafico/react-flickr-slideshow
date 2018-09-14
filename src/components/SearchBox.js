@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { SearchImagesByName, updateSeachValue } from '../actions/SearchImagesByName'
+import { PhotosActions, updateSeachValue } from '../actions/PhotosActions'
 import debounce from 'lodash/debounce'
 
 const mapStateToProps = (store) => {
@@ -13,7 +13,7 @@ const mapStateToProps = (store) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     updateSeachValue: (newValue) => dispatch(updateSeachValue(newValue)),
-    SearchImagesByName: (tags) => dispatch(SearchImagesByName(tags))
+    PhotosActions: (tags) => dispatch(PhotosActions(tags))
   }
 }
 
@@ -36,7 +36,7 @@ class SearchBox extends Component {
   sendTextChange (text) {
         console.log('debounced search')
         this.props.updateSeachValue(text)
-        this.props.SearchImagesByName(text)
+        this.props.PhotosActions(text)
   }
 
   render () {
@@ -55,7 +55,7 @@ class SearchBox extends Component {
 
 SearchBox.propTypes = {
   updateSeachValue: PropTypes.func,
-  SearchImagesByName: PropTypes.func.isRequired,
+  PhotosActions: PropTypes.func.isRequired,
   value: PropTypes.string,
   searchValue: PropTypes.string
 }

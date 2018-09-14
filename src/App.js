@@ -2,7 +2,7 @@ import React, { Component } from 'react' // eslint-disable-line no-unused-vars
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import SearchBox from './components/SearchBox.js'
-import { SearchImagesByName, updateSelectedImageIndex } from './actions/SearchImagesByName'
+import { PhotosActions, updateSelectedImageIndex } from './actions/PhotosActions'
 import MainImage from './components/MainImage.js'
 import ThumbnailsList from './components/ThumbnailsList.js'
 import util from './utils'
@@ -17,7 +17,7 @@ const mapStateToProps = (store) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    SearchImagesByName: (tags) => dispatch(SearchImagesByName(tags)),
+    PhotosActions: (tags) => dispatch(PhotosActions(tags)),
     updateSelectedImageIndex: (newIndex) => dispatch(updateSelectedImageIndex(newIndex))
   }
 }
@@ -36,8 +36,8 @@ const renderTitle = (props) => {
   }
 
 class App extends Component {
-  SearchImagesByName (event) {
-    this.props.SearchImagesByName(this.props.searchValue)
+  PhotosActions (event) {
+    this.props.PhotosActions(this.props.searchValue)
   }
 
   render () {
@@ -58,7 +58,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-  SearchImagesByName: PropTypes.func.isRequired,
+  PhotosActions: PropTypes.func.isRequired,
   searchValue: PropTypes.string,
   photos: PropTypes.any,
   updateSelectedImageIndex: PropTypes.any,
